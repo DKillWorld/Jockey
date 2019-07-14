@@ -71,12 +71,6 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPlayerControllerBinding = _mPlayerController.bind();
-    }
-
     /**
      * @inheritDoc
      */
@@ -97,6 +91,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             recreate();
             return;
         }
+
+        mPlayerControllerBinding = _mPlayerController.bind();
 
         _mPlayerController.getInfo()
                 .compose(bindToLifecycle())
